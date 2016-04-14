@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="imgs/kevinburke.markdown.css" type="text/css" />
+</head>
+<body>
+<h1 id="cab302-software-development">CAB302 Software Development</h1>
+<h1 id="practical-6-test-driven-development">Practical 6: Test Driven Development</h1>
+<p>This week's practical exercises will give you an opportunity to try Test-Driven Development in a Java/Eclipse/JUnit programming environment.</p>
+<h2 id="exercise-1-a-list-of-movie-ratings">Exercise 1: A list of movie ratings</h2>
+<p>In this exercise you will use Test-Driven Development to produce a class called <code>MovieList</code> for maintaining a list of movie ratings. To get you started, the file <code>Movie-ListTest.java</code> contains some JUnit tests, which are commented out. You should <em>uncomment these tests one at a time</em>, and follow the 'red-green-refactor' process to get each test to pass.</p>
+<p>Overall, the tests are intended to drive you towards developing a class which maintains a list of movie titles, each of which has an associated <em>rating</em>. Ratings are assumed to be on a scale of one to five 'stars', e.g. '***'.</p>
+<div class="figure">
+<img src="imgs/stars.png" title="Star ratings" />
+</div>
+<p>Although you could easily write such a class based merely on this description, the purpose of the exercise is to follow the Test-Driven Development strategy strictly, to get a feel for the 'rhythm' it introduces to software development.</p>
+<p>Therefore, for each test, only write and refactor enough code to pass that particular hurdle. Don't anticipate the code needed for later tests. Also, make use of Eclipse's tooltips and 'quick fixes' to help you develop the code. Eclipse will automatically insert templates for missing classes, methods, etc., thus saving a lot of typing.</p>
+<p>Also provided is a simple exception class, MovieListException.java, to support tests that may throw exceptions.</p>
+<h2 id="exercise-2-stars-versus-thumbs">Exercise 2: Stars versus Thumbs</h2>
+<p>The given set of tests assumed that ratings associated with movies are expressed as a number of stars. However, many film critics use a different scale for film ratings, ranging from 'two thumbs up' to 'two thumbs down'.</p>
+<div class="figure">
+<img src="imgs/thumbs.png" title="Thumb ratings" />
+</div>
+<p>In this exercise you should add a test, or tests, that allow the ratings associated with movies to be expressed as either a number of 'thumbs', ranging from -2 to +2, or a number of stars, ranging from 1 to 5. Note that if a movie has been rated using stars your <code>getRating</code> method should return a string like '****', as before, but if it has been rated using a number of thumbs it should return a string like '<code>One thumb up</code>' or '<code>Two thumbs down</code>' instead. You will then need to modify your program to pass the new test(s), again following the red-green-refactor strategy.</p>
+<p><strong>Hint:</strong> The fact that the rating given to movies can be expressed either as a number of 'stars' or a number of 'thumbs' suggests that these two scoring systems should be subtypes of a common 'rating' supertype.</p>
+<p><strong>Note:</strong> This exercise will require you to (slightly) rewrite some of your existing tests, to distinguish numerical scores in 'stars' from those in 'thumbs'. Remember that maintaining the tests is just as important as developing the program code!</p>
+<h2 id="exercise-3-academy-award-winners">Exercise 3: Academy Award Winners</h2>
+<p>In this exercise you will introduce a <em>mock</em> object to represent an external data source. The annual Academy Awards, or 'Oscars', have a big impact on a movie's fortunes. One of the given tests, <code>listAlphabetically</code>, required the <code>MovieList</code> class to produce an alphabetically-sorted list of movie titles, suitable for printing. In this exercise we want to distinguish those movies that have won Academy Awards, by preceding their names in the list with string '<code>Oscar winner:</code>'.</p>
+<div class="figure">
+<img src="imgs/oscars.png" title="Oscars" />
+</div>
+<p>Firstly, therefore, you should modify test <code>listAlphabetically</code> so that Academy Award winners' names are preceded by string '<code>Oscar winner:</code>'. (Note: Of the films mentioned in the provided unit tests, <em>Casablanca</em>, <em>Citizen Kane</em> and <em>Star Wars</em> all won Oscars.)</p>
+<p>Next you need to introduce a mock (or 'stub') database that tells you whether or not a movie has won an Academy Award, given its title. Only enough entries need to be included to make the tests pass. You can then use the mock database to make your revised <code>listAlphabetically</code> method pass the changed test.</p>
+<p><strong>Observation:</strong> The code you add to your program to interface with the mock database is incomplete. It must eventually be replaced by 'real' code to access a 'real' database of Oscar winners, and should be clearly commented as such, e.g. with an Eclipse '<code>TODO</code>' comment.</p>
+<p>And remember, as the programmers at Google say, ...</p>
+<div class="figure">
+<img src="imgs/bulbs.png" title="Debugging sucks. Testing rocks." />
+</div>
+</body>
+</html>
